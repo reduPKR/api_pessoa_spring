@@ -11,8 +11,4 @@ public enum PhoneType {
     COMMERCIAL("Comercial");
 
     private final String description;
-
-    PhoneType(String description) {
-        this.description = description;
-    }
 }
