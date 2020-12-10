@@ -11,7 +11,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/people")
 public class PersonController {
-    private PersonService personService;
+    private final PersonService personService;
 
     public PersonController(PersonService personService) {
         this.personService = personService;
