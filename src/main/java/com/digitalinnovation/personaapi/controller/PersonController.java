@@ -31,6 +31,7 @@ public class PersonController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public PersonDTO getById(@PathVariable long id) throws PersonNotFoundException {
         return personService.getById(id);
     }
