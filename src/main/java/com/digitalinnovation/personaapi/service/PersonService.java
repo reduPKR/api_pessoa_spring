@@ -25,8 +25,12 @@ public class PersonService {
     public MessageResponseDTO createPerson(PersonDTO personDTO){
         Person person = personMapper.toModel(personDTO);
         Person new_person = personRepository.save(person);
+        return messageReturn("Usuario cadastrado seu id é: "+new_person.getId());
+    }
+
+    private MessageResponseDTO messageReturn(String message) {
         return MessageResponseDTO.builder()
-                .message("Usuario cadastrado seu id é: "+new_person.getId())
+                .message(message)
                 .build();
     }
 
@@ -54,5 +58,12 @@ public class PersonService {
     public void delete(long id) throws PersonNotFoundException{
         verifyExists(id);
         personRepository.deleteById(id);
+    }
+
+    public MessageResponseDTO update(long id, PersonDTO personDTO) throws PersonNotFoundException {
+        verifyExists(id);
+        Person person = personMapper.toModel(personDTO);
+        Person new_person = personRepository.save(person);
+        return messageReturn("Usuario cadastrado seu id é: "+new_person.getId());
     }
 }
